@@ -27,8 +27,12 @@ var LoginController = /** @class */ (function () {
             res.redirect('/');
         }
         else {
-            res.send("\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<h3>Invalid email or PASSWORD</h3>\n\t\t\t\t\t\t\t\t<a href=\"/login\">Login</a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t");
+            res.send("\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<h3>Invalid email or PASSWORD</h3>\n\t\t\t\t\t\t\t\t<a href=\"/auth/login\">Login</a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t");
         }
+    };
+    LoginController.prototype.getLogout = function (req, res) {
+        req.session = { loggedIn: false };
+        res.redirect('/');
     };
     __decorate([
         (0, decorators_1.get)('/login'),
@@ -45,6 +49,12 @@ var LoginController = /** @class */ (function () {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)
     ], LoginController.prototype, "postlogin", null);
+    __decorate([
+        (0, decorators_1.get)('/logout'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", void 0)
+    ], LoginController.prototype, "getLogout", null);
     LoginController = __decorate([
         (0, decorators_1.controller)('/auth')
     ], LoginController);

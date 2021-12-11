@@ -10,6 +10,8 @@ function logger (req: Request, res: Response, next: NextFunction) {
 
 @controller('/auth')
 class LoginController { 
+
+  
  
   @get('/login')
   @use(logger)
@@ -44,12 +46,19 @@ class LoginController {
 						res.send(`
 							<div>
 								<h3>Invalid email or PASSWORD</h3>
-								<a href="/login">Login</a>
+								<a href="/auth/login">Login</a>
 							</div>
 						`
-	)
+	          )
 				
 				}
+		}
+
+    @get('/logout')
+    getLogout(req: Request, res: Response) {
+						req.session = { loggedIn: false}
+						res.redirect('/')
+				
 		}
 
 }
