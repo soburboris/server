@@ -6,7 +6,7 @@ import { MetaDataKeys } from './MetaDataKeys';
 import { NextFunction, RequestHandler, Request, Response } from 'express';
 
 
-function bodyValidators(keys: string): RequestHandler {
+function bodyValidators(keys: string[]): RequestHandler {
   return function(req: Request, res: Response, next: NextFunction) {
     if(!req.body){
       res.status(422).send('Invalid Request')

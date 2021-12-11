@@ -7,7 +7,7 @@ export class AppRouter {
 		if (!AppRouter.instance) {
 			AppRouter.instance = Router()
 		}
-
+		
 		return AppRouter.instance
 	}
 }

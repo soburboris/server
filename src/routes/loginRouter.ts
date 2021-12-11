@@ -14,7 +14,7 @@ function requireAuth(req:Request, res: Response, next: NextFunction): void {
 	res.send('Accsess is denied')
 }
 
-const router = Router()
+export const router = Router()
 
 router.get('/login', (req:Request, res: Response) => {
 	res.send(`
@@ -81,4 +81,3 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
 			res.send('Welcome to protected route , logged in user')
 		})
 
-export {router}

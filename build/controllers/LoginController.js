@@ -39,6 +39,7 @@ var LoginController = /** @class */ (function () {
     ], LoginController.prototype, "getLogin", null);
     __decorate([
         (0, decorators_1.post)('/login'),
+        (0, decorators_1.use)(logger),
         (0, decorators_1.bodyValidator)('email', 'password'),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
