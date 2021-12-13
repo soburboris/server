@@ -23,7 +23,11 @@ var LoginController = /** @class */ (function () {
     LoginController.prototype.postlogin = function (req, res) {
         var _a = req.body, email = _a.email, password = _a.password;
         if (email == 'boris@gmail.com' && password == '1') {
-            req.session = { loggedIn: true };
+            req.session = {
+                loggedIn: true,
+                email: email,
+                password: password
+            };
             res.redirect('/');
         }
         else {
@@ -31,7 +35,11 @@ var LoginController = /** @class */ (function () {
         }
     };
     LoginController.prototype.getLogout = function (req, res) {
-        req.session = { loggedIn: false };
+        req.session = {
+            loggedIn: false,
+            email: null,
+            password: null
+        };
         res.redirect('/');
     };
     __decorate([
@@ -43,7 +51,6 @@ var LoginController = /** @class */ (function () {
     ], LoginController.prototype, "getLogin", null);
     __decorate([
         (0, decorators_1.post)('/login'),
-        (0, decorators_1.use)(logger),
         (0, decorators_1.bodyValidator)('email', 'password'),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),

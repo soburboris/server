@@ -23,14 +23,16 @@ var RootController = /** @class */ (function () {
     }
     RootController.prototype.getRoot = function (req, res) {
         if (req.session && req.session.loggedIn) {
-            res.send("\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<h3> You are logged in!</h3>\n\t\t\t\t\t\t\t\t<a href=\"/auth/logout\">Logout</a>\n\t\t\t\t\t\t\t</div>\t\n\t\t\t\t\t\t");
+            res.send("\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<h3> You are logged in! </h3>\n\t\t\t\t\t\t\t\t<a href=\"/auth/logout\">Logout</a>\n\t\t\t\t\t\t\t</div>\t\n\t\t\t\t\t\t");
         }
         else {
             res.send("\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<h3> You are not logged in!</h3>\n\t\t\t\t\t\t\t\t<a href=\"/auth/login\">Log in</a>\n\t\t\t\t\t\t\t</div>\t\n\t\t\t\t\t\t");
         }
     };
     RootController.prototype.getProtected = function (req, res) {
-        res.send('Welcome to protected route , logged in user');
+        if (req.session) {
+            res.send("<div>\n\t\t\t\t\t\t\t\t<h3> \tWelcome to protected route , logged in user. You login is ".concat(req.session.email, " and ").concat(req.session.password, "</h3>\n\t\t\t\t\t\t\t\t<a href=\"/auth/logout\">Logout</a>\n\t\t\t\t\t\t\t</div>\t\n\t\t\t\t\n\t\t\t"));
+        }
     };
     __decorate([
         (0, decorators_1.get)('/'),

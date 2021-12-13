@@ -32,7 +32,7 @@ export function controller(routePrefix: string) {
       const path = Reflect.getMetadata(MetaDataKeys.Path, target.prototype, key);
       
       const method: Methods = Reflect.getMetadata(MetaDataKeys.Method, target.prototype, key)
-      const middlewares = Reflect.getMetadata(MetaDataKeys.MiddleWare, target.prototype, key) || []
+      const middlewares: [] = Reflect.getMetadata(MetaDataKeys.MiddleWare, target.prototype, key) || []
       
        const requiredBodyProps = Reflect.getMetadata(MetaDataKeys.validator, target.prototype, key) || []
        const validator = bodyValidators(requiredBodyProps)

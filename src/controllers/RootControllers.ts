@@ -1,3 +1,4 @@
+
 import {Response, Request, NextFunction} from 'express'
 import {get, controller , use} from './decorators'
 
@@ -17,10 +18,10 @@ class RootController {
 
 	@get('/')
 	getRoot(req:Request, res: Response) {
-	if (req.session && req.session.loggedIn) {
+	if (req.session  && req.session.loggedIn) {
 					res.send( `
 							<div>
-								<h3> You are logged in!</h3>
+								<h3> You are logged in! </h3>
 								<a href="/auth/logout">Logout</a>
 							</div>	
 						`)
@@ -37,6 +38,15 @@ class RootController {
 		@get('/protected')
 		@use(requireAuth)
 		getProtected(req: Request, res:Response) {
-			res.send('Welcome to protected route , logged in user')
+			if (req.session){
+			res.send(
+				
+						`<div>
+								<h3> 	Welcome to protected route , logged in user. You login is ${req.session.email} and ${req.session.password}</h3>
+								<a href="/auth/logout">Logout</a>
+							</div>	
+				
+			`)
 		}
+	}
 }
